@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Build Images'){
             steps {
-                sh "docker build -t jenkins_image"
+                sh "docker build -t jenkins_image ."
             }
         }
         stage('Run Containers'){
