@@ -1,15 +1,15 @@
 pipeline {
     agent any
     stages {
-        stage("Build"){
+        stage('Build'){
             steps {
                 sh "ls -al"
             }
-        stage("Test"){
+        stage('Test'){
             steps {
                 sh "touch file.txt"
             }
-        stage("Deploy"){
+        stage('Deploy'){
             steps {
                 sh "mv file.txt file2.txt"
             }
