@@ -1,20 +1,22 @@
 pipeline {
     agent any
     stages {
-        stage('Build'){
+        stage('Clean Up'){
             steps {
-                sh "ls -al"
+                sh "docker rm -f $(docker ps -aq) || true"
             }
         }
-        stage('Test'){
+        stage('Build Images'){
             steps {
-                sh "touch file.txt"
+                sh "docker build -t jenkins_image"
             }
         }
-        stage('Deploy'){
+        stage('Run Containers'){
             steps {
-                sh "mv file.txt file2.txt"
+                sh "docker run -d -p 80:80 --name jenkins_container \
+                docker ps"
             }
         }
+
     }
 }
