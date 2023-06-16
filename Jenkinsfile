@@ -3,7 +3,8 @@ pipeline {
     stages {
         stage('Clean Up'){
             steps {
-                sh "docker rm -f ${docker ps -aq} || true"
+                sh "docker rm -f \ $(docker ps -aq) || true \
+                docker rmi -f \ $(docker images) || true"
             }
         }
         stage('Build Images'){
@@ -13,7 +14,7 @@ pipeline {
         }
         stage('Run Containers'){
             steps {
-                sh "docker run -d -p 80:80 --name flask-app flask-app\
+                sh "docker run -d -p 80:80 --name flask-app flask-app \
                 docker ps"
             }
         }
