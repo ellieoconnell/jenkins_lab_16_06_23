@@ -3,17 +3,17 @@ pipeline {
     stages {
         stage('Clean Up'){
             steps {
-                sh "sh docker rm -f $(docker ps -aq) || true"
+                sh "docker rm -f $(docker ps -aq) || true"
             }
         }
         stage('Build Images'){
             steps {
-                sh "sh docker build -t jenkins_image"
+                sh "docker build -t jenkins_image"
             }
         }
         stage('Run Containers'){
             steps {
-                sh "sh docker run -d -p 80:80 --name jenkins_container \
+                sh "docker run -d -p 80:80 --name jenkins_container \
                 docker ps"
             }
         }
