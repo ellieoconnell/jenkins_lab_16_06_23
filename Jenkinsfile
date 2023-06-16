@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Run Containers'){
             steps {
-                sh "docker run -d -p 80:80 --name flask-app flask-app"
+                sh "docker run -d -p 80:5500 --name flask-app flask-app"
                 sh "docker ps"
             }
         }
